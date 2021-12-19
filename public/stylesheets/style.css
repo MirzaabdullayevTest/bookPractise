@@ -1,0 +1,25 @@
+.carousel .carousel-item {
+    width: 800px;
+}
+
+nav {
+    background-color: rgb(15, 15, 15);
+}
+
+form {
+    width: 600px;
+    margin: auto;
+}
+
+.btn {
+    background-color: rgb(15, 15, 15);
+}
+
+.btn:hover {
+    background-color: rgb(15, 15, 15);
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
