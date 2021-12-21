@@ -23,3 +23,13 @@ form {
     display: flex;
     flex-wrap: wrap;
 }
+
+.card-action{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-action form{
+    width: unset;
+}

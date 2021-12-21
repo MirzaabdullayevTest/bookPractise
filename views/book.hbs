@@ -10,7 +10,10 @@
                     <p>{{price}}</p>
                 </div>
                 <div class="card-action">
-                    <a href="/books/delete/book/{{id}}">Delete book</a>
+                    <form action="/books/delete" method="POST">
+                        <button class="btn" type="submit">Delete</button>
+                        <input type="hidden" value="{{id}}" name="id">
+                    </form>
                 </div>
             </div>
         </div>

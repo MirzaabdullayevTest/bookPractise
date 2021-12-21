@@ -7,6 +7,7 @@ const path = require('path')
 // Importing routers 
 const homeRouter = require('./routers/home')
 const booksRouter = require('./routers/books')
+const cardRouter = require('./routers/card')
 
 // Using exhbs
 const hbs = exhbs.create({
@@ -26,6 +27,7 @@ app.use(express.urlencoded({ extended: true }))
 // Using routers
 app.use('/', homeRouter)
 app.use('/books', booksRouter)
+app.use('/card', cardRouter)
 
 // Listening port
 const port = 3000

@@ -1,14 +1,1 @@
-[
-    {
-        "title": "Good to great",
-        "price": "1555",
-        "img": "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-        "id": "3e399f0a-0b18-4927-a72c-4ef64f311f48"
-    },
-    {
-        "title": "Rich dad and poor dad",
-        "price": "5555",
-        "img": "https://images.unsplash.com/photo-1576872381149-7847515ce5d8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=736&q=80",
-        "id": "151c5d9d-2099-4f2a-b3d9-b3e112cddfb4"
-    }
-]
+[{"title":"Good to great","price":"1555","img":"https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80","id":"f3bf02fa-4fbe-42e9-9432-04ada4fca187"},{"title":"Rich dad and poor dad","price":"6000","img":"https://images.unsplash.com/photo-1495640388908-05fa85288e61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80","id":"4882e9ff-640e-40b8-ae0f-bcb72374cd06"},{"title":"How I created America","price":"7000","img":"https://images.unsplash.com/photo-1509266272358-7701da638078?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=686&q=80","id":"1382bdd4-f354-49ba-9c7c-dc16abee0ebc"}]

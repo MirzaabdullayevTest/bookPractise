@@ -45,6 +45,46 @@ class Book {
         })
     }
 
+    static async update(title, price, img, id) {
+        const books = await Book.getAll() // massiv
+
+        const book = {
+            title,
+            price,
+            img,
+            id
+        }
+        const idx = books.findIndex(book => book.id === id) // id lar teng bo'lsa index kalit qaytaradi // Number // son 0 1 2 3
+        books[idx] = book
+
+        return new Promise((res, rej) => {
+            fs.writeFile(
+                path.join(__dirname, '..', 'data', 'db.json'),
+                JSON.stringify(books),
+                (err) => {
+                    if (err) rej(err)
+                    else res()
+                }
+            )
+        })
+    }
+
+    static async delete(id) {
+        let books = await Book.getAll()
+        books = books.filter(book => book.id !== id) // [{}]
+
+        return new Promise((res, rej) => {
+            fs.writeFile(
+                path.join(__dirname, '..', 'data', 'db.json'),
+                JSON.stringify(books),
+                (err) => {
+                    if (err) rej(err)
+                    else res()
+                }
+            )
+        })
+    }
+
     static async getById(id) {
         const books = await Book.getAll()//massiv
         return books.filter(book => book.id === id)[0] // [{}] bitta obj dan iborat massiv qaytadi // [0] obj ga murojat

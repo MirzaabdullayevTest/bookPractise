@@ -28,12 +28,33 @@ router.get('/add/book', (req, res) => {
     })
 })
 
+router.get('/update/:id', async (req, res) => {
+    const book = await Book.getById(req.params.id)
+
+    res.render('updateBook', {
+        title: book.title,
+        price: book.price,
+        img: book.img,
+        id: book.id
+    })
+})
+
+router.post('/update', async (req, res) => {
+    const { title, price, img, id } = req.body
+    await Book.update(title, price, img, id);
+    res.redirect('/books')
+})
+
+router.post('/delete', async (req, res) => {
+    await Book.delete(req.body.id)
+    res.redirect('/books')
+})
+
 router.post('/add/book', async (req, res) => {
     // console.log(req.body);  // obyekt {bookName: '', ....}
     const book = new Book(req.body.bookName, req.body.bookPrice, req.body.bookImg)
     await book.save()
     res.redirect('/books')
-
 })
 
 module.exports = router
