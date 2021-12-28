@@ -3,6 +3,7 @@ const app = express()
 const exhbs = require('express-handlebars')
 const path = require('path')
 
+require('dotenv').config()
 
 // Importing routers 
 const homeRouter = require('./routers/home')
@@ -22,7 +23,7 @@ app.set('views', 'views')
 // Watching public folder
 app.use(express.static(path.join(__dirname, 'public')))
 
-app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: true })) 
 
 // Using routers
 app.use('/', homeRouter)
@@ -30,8 +31,8 @@ app.use('/books', booksRouter)
 app.use('/card', cardRouter)
 
 // Listening port
-const port = 3000
-const host = 'localhost'
+const port = process.env.PORT
+const host = process.env.HOST
 
 app.listen(port, host, () => {
     console.log(`Server watching ${host} ${port}...`);

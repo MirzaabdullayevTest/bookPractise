@@ -24,7 +24,7 @@ class Card {
 
         // card.price = card.pirce + book.price
         card.price += +book.price
-        
+
         return new Promise((res, rej) => {
             fs.writeFile(p, JSON.stringify(card), (err) => {
                 if (err) rej(err)
@@ -41,7 +41,6 @@ class Card {
             })
         })
     }
-
 }
 
 module.exports = Card
