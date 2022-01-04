@@ -16,4 +16,9 @@ router.get('/', async (req, res) => {
     })
 })
 
+router.delete('/remove/:id', async (req, res) => {
+    const card = await Card.remove(req.params.id)
+    res.status(200).json(card)  // yangi hosil bo'lgan cartani klientga qaytardik
+})
+
 module.exports = router

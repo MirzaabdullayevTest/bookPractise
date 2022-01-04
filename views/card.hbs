@@ -1,32 +1,36 @@
 <h1>{{title}}</h1>
-<div class="container">
-    <table>
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Count</th>
-                <th>Price</th>
-                <th>Action</th>
-            </tr>
-        </thead>
+<div id="card">
+    <div class="container">
+        {{#if books.length}}
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Count</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
 
-        <tbody>
-            {{#each books}}
-            <tr>
-                <td>{{title}}</td>
-                <td>{{count}}</td>
-                <td>
-                    <p class="price">{{price}}</p>
-                </td>
-                <td>
-                    <a href="/delete" class="btn">Delete</a>
-                </td>
-            </tr>
-            {{/each}}
-        </tbody>
+            <tbody>
+                {{#each books}}
+                <tr>
+                    <td>{{title}}</td>
+                    <td>{{count}}</td>
+                    <td>
+                        <p class="bookPrice">{{price}}</p> 
+                    </td>
+                    <td>
+                        <button class="btn js-remove" data-id="{{id}}">Delete</button>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
 
-    </table>
-
-    <p><strong>Price:</strong> <span class="price">{{price}}</span></p>
-
+        </table>
+        <p><strong>Price:</strong> <span class="price">{{price}}</span></p>
+        {{else}}
+        <p>Shopping card is empty</p>
+        {{/if}}
+    </div>
 </div>

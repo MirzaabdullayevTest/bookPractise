@@ -41,6 +41,29 @@ class Card {
             })
         })
     }
+
+    static async remove(id) {
+        const card = await Card.fetch() // hamma korzinani chaqirdik
+        const idx = card.books.findIndex(c => c.id === id) // idex kalit keladi // 0 1 2
+        const book = card.books[idx] // kitobni topdik
+
+        if (book.count === 1) {
+            // kitobni to'liq o'chiramiz
+            card.books = card.books.filter(c => c.id !== id) // yangi massiv id li kitob o'chirildi
+        } else {
+            // kitobni soni 1 tadan ko'p bo'lsa faqat sonini kamaytiramiz
+            card.books[idx].count--
+        }
+
+        card.price -= book.price  // umumiy summadan id li kitobni summasini ayirdik
+
+        return new Promise((res, rej) => {
+            fs.writeFile(p, JSON.stringify(card), (err) => {
+                if (err) rej(err)
+                else res(card)
+            })
+        })
+    }
 }
 
 module.exports = Card
