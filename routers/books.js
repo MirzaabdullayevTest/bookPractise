@@ -3,8 +3,9 @@ const router = Router()
 const Book = require('../models/Book')
 
 router.get('/', async (req, res) => {
-    const books = await Book.getAll()
+    const books = await Book.find()  /* find ma'lumotlarni topadi */
 
+    // console.log(books);
     res.render('books', {
         title: 'All books',
         books
@@ -12,7 +13,7 @@ router.get('/', async (req, res) => {
 })
 
 router.get('/view/:id', async (req, res) => {
-    const book = await Book.getById(req.params.id) //obyekt
+    const book = await Book.findById(req.params.id) //obyekt
 
     res.render('book', {
         title: book.title,
@@ -29,7 +30,7 @@ router.get('/add/book', (req, res) => {
 })
 
 router.get('/update/:id', async (req, res) => {
-    const book = await Book.getById(req.params.id)
+    const book = await Book.findById(req.params.id)  // id si bo'yicha topadi
 
     res.render('updateBook', {
         title: book.title,
@@ -40,19 +41,27 @@ router.get('/update/:id', async (req, res) => {
 })
 
 router.post('/update', async (req, res) => {
-    const { title, price, img, id } = req.body
-    await Book.update(title, price, img, id);
+    const { id } = req.body
+    await Book.findByIdAndUpdate(id, req.body)
+
+    delete req.body.id
+
     res.redirect('/books')
 })
 
 router.post('/delete', async (req, res) => {
-    await Book.delete(req.body.id)
+    await Book.findByIdAndDelete(req.body.id)
     res.redirect('/books')
 })
 
 router.post('/add/book', async (req, res) => {
     // console.log(req.body);  // obyekt {bookName: '', ....}
-    const book = new Book(req.body.bookName, req.body.bookPrice, req.body.bookImg)
+    const { title, price, img } = req.body
+    const book = new Book({
+        title,
+        price,
+        img
+    })
     await book.save()
     res.redirect('/books')
 })

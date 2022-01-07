@@ -2,6 +2,8 @@ const express = require('express')
 const app = express()
 const exhbs = require('express-handlebars')
 const path = require('path')
+const mongoose = require('mongoose')
+const User = require('./models/User')
 
 require('dotenv').config()
 
@@ -13,7 +15,11 @@ const cardRouter = require('./routers/card')
 // Using exhbs
 const hbs = exhbs.create({
     defaultLayout: 'main',
-    extname: 'hbs'
+    extname: 'hbs',
+    runtimeOptions: {
+        allowProtoMethodsByDefault: true,
+        allowProtoPropertiesByDefault: true
+    }
 })
 
 app.engine('hbs', hbs.engine)
@@ -23,17 +29,39 @@ app.set('views', 'views')
 // Watching public folder
 app.use(express.static(path.join(__dirname, 'public')))
 
-app.use(express.urlencoded({ extended: true })) 
+app.use(express.urlencoded({ extended: true }))
 
 // Using routers
 app.use('/', homeRouter)
 app.use('/books', booksRouter)
 app.use('/card', cardRouter)
 
-// Listening port
-const port = process.env.PORT
-const host = process.env.HOST
+const start = async () => {
+    try {
+        await mongoose.connect(process.env.MONGOURI)
 
-app.listen(port, host, () => {
-    console.log(`Server watching ${host} ${port}...`);
-})
+        const candidate = await User.findOne() // bitta ma'lumot olib beradi // foydalanuvchi bor bo'lsa userga tushadi
+        if (!candidate) {
+            const user = new User({
+                email: 'mirzaadullayev023@mial.ru',
+                name: 'Javlonbek',
+                cart: { items: [] }  // userni korzinasi default bo'sh
+            })
+
+            await user.save()  // userni saqladik
+        }
+
+        // Listening port
+        const port = process.env.PORT
+        const host = process.env.HOST
+        app.listen(port, host, () => {
+            console.log(`Server watching ${host} ${port}...`);
+        })
+    } catch (error) {
+        console.log(error);
+        process.exit(1)
+    }
+}
+
+start()
+
