@@ -3,8 +3,7 @@ const router = Router()
 const Book = require('../models/Book')
 
 router.get('/', async (req, res) => {
-    const books = await Book.find()  /* find ma'lumotlarni topadi */
-
+    const books = await Book.find().populate('userId', 'email name').select('title price img')/* find ma'lumotlarni topadi */
     // console.log(books);
     res.render('books', {
         title: 'All books',
@@ -57,10 +56,12 @@ router.post('/delete', async (req, res) => {
 router.post('/add/book', async (req, res) => {
     // console.log(req.body);  // obyekt {bookName: '', ....}
     const { title, price, img } = req.body
+
     const book = new Book({
         title,
         price,
-        img
+        img,
+        userId: req.user /* id o'zi topa oladi */
     })
     await book.save()
     res.redirect('/books')

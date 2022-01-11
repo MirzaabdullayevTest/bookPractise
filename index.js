@@ -26,6 +26,11 @@ app.engine('hbs', hbs.engine)
 app.set('view engine', 'hbs')
 app.set('views', 'views')
 
+app.use(async (req, res, next) => {
+    req.user = await User.findById('61dd7d219f894803f3f90bcb')  // id orqali userni topib beradi
+    next()
+})
+
 // Watching public folder
 app.use(express.static(path.join(__dirname, 'public')))
 
@@ -41,6 +46,7 @@ const start = async () => {
         await mongoose.connect(process.env.MONGOURI)
 
         const candidate = await User.findOne() // bitta ma'lumot olib beradi // foydalanuvchi bor bo'lsa userga tushadi
+
         if (!candidate) {
             const user = new User({
                 email: 'mirzaadullayev023@mial.ru',

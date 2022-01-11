@@ -1,18 +1,21 @@
 const { Router } = require('express')
 const router = Router()
+const Book = require('../models/Book')
 
 router.post('/buy', async (req, res) => {
-    // req.body.id
-    // await Card.add(req.body.id)
-    // res.redirect('/card')
+    const book = await Book.findById(req.body.id)
+    await req.user.addToCart(book)
+    res.redirect('/card')
 })
 
 router.get('/', async (req, res) => {
-    const card = await Card.fetch()  // korzinadagi hamma kitoblari chiqaradi
-    res.render('card', {
-        books: card.books, // massiv
-        price: card.price
-    })
+    // const card = await Card.fetch()  // korzinadagi hamma kitoblari chiqaradi
+    // res.render('card', {
+    //     books: card.books, // massiv
+    //     price: card.price
+    // })
+
+    res.json({ test: true })
 })
 
 router.delete('/remove/:id', async (req, res) => {
