@@ -15,7 +15,10 @@ const userSchema = new Schema({
 
 userSchema.methods.addToCart = function (book) {
     // const clonedItems = this.cart.items.concat()  // clone
+    console.log(this);
+    
     const items = [...this.cart.items]  // clone
+    
     const idx = items.findIndex(c => {  // 0 1 4 // -1
         return c.bookId.toString() === book._id.toString()
     })

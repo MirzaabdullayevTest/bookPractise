@@ -6,7 +6,7 @@
             <thead>
                 <tr>
                     <th>Title</th>
-                    <th>Count</th>
+                    {{!-- <th>Count</th> --}}
                     <th>Price</th>
                     <th>Action</th>
                 </tr>
@@ -16,7 +16,7 @@
                 {{#each books}}
                 <tr>
                     <td>{{title}}</td>
-                    <td>{{count}}</td>
+                    {{!-- <td>{{count}}</td> --}}
                     <td>
                         <p class="bookPrice">{{price}}</p> 
                     </td>
@@ -28,7 +28,7 @@
             </tbody>
 
         </table>
-        <p><strong>Price:</strong> <span class="price">{{price}}</span></p>
+        {{!-- <p><strong>Price:</strong> <span class="price">{{price}}</span></p> --}}
         {{else}}
         <p>Shopping card is empty</p>
         {{/if}}

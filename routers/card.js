@@ -9,13 +9,25 @@ router.post('/buy', async (req, res) => {
 })
 
 router.get('/', async (req, res) => {
-    // const card = await Card.fetch()  // korzinadagi hamma kitoblari chiqaradi
-    // res.render('card', {
-    //     books: card.books, // massiv
-    //     price: card.price
-    // })
+    const user = await req.user.populate('cart.items.bookId', 'title img price')
+    // console.log(user.cart.items);
 
-    res.json({ test: true })
+    let books = []
+
+    user.cart.items.map(c => {
+        books.push(c.bookId)
+    })
+
+    console.log(books);
+
+    // console.log(user.cart.items);
+
+    res.render('card', {
+        books, // massiv
+        // price: card.price
+    })
+
+    // res.json({ test: true })
 })
 
 router.delete('/remove/:id', async (req, res) => {

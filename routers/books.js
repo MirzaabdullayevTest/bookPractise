@@ -4,7 +4,6 @@ const Book = require('../models/Book')
 
 router.get('/', async (req, res) => {
     const books = await Book.find().populate('userId', 'email name').select('title price img')/* find ma'lumotlarni topadi */
-    // console.log(books);
     res.render('books', {
         title: 'All books',
         books
