@@ -15,10 +15,9 @@ const userSchema = new Schema({
 
 userSchema.methods.addToCart = function (book) {
     // const clonedItems = this.cart.items.concat()  // clone
-    console.log(this);
-    
+
     const items = [...this.cart.items]  // clone
-    
+
     const idx = items.findIndex(c => {  // 0 1 4 // -1
         return c.bookId.toString() === book._id.toString()
     })
@@ -41,6 +40,32 @@ userSchema.methods.addToCart = function (book) {
 
     return this.save()
 }
+
+userSchema.methods.deleteItem = function (id) {
+    // const clonedItems = this.cart.items.concat()  // clone
+
+    let items = [...this.cart.items]  // clone
+
+    const idx = items.findIndex(c => {  // 0 1 4 // -1
+        return c.bookId.toString() === id.toString()
+    })
+
+    if (items[idx].count === 1) {
+        /// demak bu kitobni korzinadan to'liq o'chiramiz
+        items = items.filter(c => c.bookId.toString() !== id.toString())
+    } else {
+        // demak bu kitobni sonini kamaytiramiz
+        items[idx].count--
+    }
+
+
+
+    this.cart = { items }
+
+    return this.save()
+}
+
+
 
 
 module.exports = model('User', userSchema)
