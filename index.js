@@ -11,6 +11,7 @@ require('dotenv').config()
 const homeRouter = require('./routers/home')
 const booksRouter = require('./routers/books')
 const cardRouter = require('./routers/card')
+const orderRouter = require('./routers/order')
 
 // Using exhbs
 const hbs = exhbs.create({
@@ -40,6 +41,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use('/', homeRouter)
 app.use('/books', booksRouter)
 app.use('/card', cardRouter)
+app.use('/orders', orderRouter)
 
 const start = async () => {
     try {

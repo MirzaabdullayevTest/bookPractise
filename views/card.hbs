@@ -18,7 +18,7 @@
                     <td>{{title}}</td>
                     <td>{{count}}</td>
                     <td>
-                        <p class="bookPrice">{{price}}</p> 
+                        <p class="bookPrice">{{price}}</p>
                     </td>
                     <td>
                         <button class="btn js-remove" data-id="{{id}}">Delete</button>
@@ -29,6 +29,10 @@
 
         </table>
         <p><strong>Price:</strong> <span class="price">{{price}}</span></p>
+
+        <form action="/orders" method="POST" style="width: auto;">
+            <button class="btn btn-primary">Order</button>
+        </form>
         {{else}}
         <p>Shopping card is empty</p>
         {{/if}}
