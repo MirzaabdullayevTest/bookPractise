@@ -47,7 +47,7 @@ const start = async () => {
     try {
         await mongoose.connect('mongodb+srv://Mirzaabdullayev:RzQmLgKpyJhO67PV@cluster0.a3ilh.mongodb.net/bookStore')
 
-        const candidate = await User.findOne() 
+        const candidate = await User.findOne()
 
         if (!candidate) {
             const user = new User({
@@ -61,9 +61,9 @@ const start = async () => {
 
         // Listening port
         const port = 3000
-        const host = 'localhost'
-        app.listen(port, host, () => {
-            console.log(`Server watching ${host} ${port}...`);
+
+        app.listen(port, () => {
+            console.log(`Server watching ${port}...`);
         })
     } catch (error) {
         console.log(error);
