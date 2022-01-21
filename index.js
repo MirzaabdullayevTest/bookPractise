@@ -47,7 +47,7 @@ const start = async () => {
     try {
         await mongoose.connect('mongodb+srv://Mirzaabdullayev:RzQmLgKpyJhO67PV@cluster0.a3ilh.mongodb.net/bookStore')
 
-        const candidate = await User.findOne() // bitta ma'lumot olib beradi // foydalanuvchi bor bo'lsa userga tushadi
+        const candidate = await User.findOne() 
 
         if (!candidate) {
             const user = new User({
