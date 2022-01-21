@@ -61,7 +61,7 @@ const start = async () => {
 
         // Listening port
         const port = 3000
-        const host = localhost
+        const host = 'localhost'
         app.listen(port, host, () => {
             console.log(`Server watching ${host} ${port}...`);
         })
