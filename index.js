@@ -45,7 +45,7 @@ app.use('/orders', orderRouter)
 
 const start = async () => {
     try {
-        await mongoose.connect(process.env.MONGOURI)
+        await mongoose.connect('mongodb+srv://Mirzaabdullayev:RzQmLgKpyJhO67PV@cluster0.a3ilh.mongodb.net/bookStore')
 
         const candidate = await User.findOne() // bitta ma'lumot olib beradi // foydalanuvchi bor bo'lsa userga tushadi
 
@@ -60,8 +60,8 @@ const start = async () => {
         }
 
         // Listening port
-        const port = process.env.PORT
-        const host = process.env.HOST
+        const port = 3000
+        const host = localhost
         app.listen(port, host, () => {
             console.log(`Server watching ${host} ${port}...`);
         })
