@@ -4,7 +4,7 @@ const orderSchema = new Schema({
     books: [
         {
             book: {
-                type: Object,
+                type: Object, // {price, name, id}
                 required: true
             },
             count: {
@@ -17,7 +17,7 @@ const orderSchema = new Schema({
     user: {
         name: String,
         userId: {
-            type: Schema.Types.ObjectId,
+            type: Schema.Types.ObjectId,  // {name, id}
             ref: 'User',
             required: true
         }
