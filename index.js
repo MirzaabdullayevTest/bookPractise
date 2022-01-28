@@ -60,7 +60,7 @@ const start = async () => {
         }
 
         // Listening port
-        const port = 3000
+        const port = 3000 || 8080
 
         app.listen(port, () => {
             console.log(`Server watching ${port}...`);
