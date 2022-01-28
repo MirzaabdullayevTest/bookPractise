@@ -53,10 +53,10 @@ const start = async () => {
             const user = new User({
                 email: 'mirzaadullayev023@mial.ru',
                 name: 'Javlonbek',
-                cart: { items: [] }  // userni korzinasi default bo'sh
+                cart: { items: [] }  // userni    korzinasi default bo'sh
             })
 
-            await user.save()  // userni saqladik
+            await user.save()  // userni   saqladik
         }
 
         // Listening port
